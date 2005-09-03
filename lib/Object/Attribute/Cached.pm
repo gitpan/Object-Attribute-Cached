@@ -1,6 +1,6 @@
 package Object::Attribute::Cached;
 
-our $VERSION = 0.92;
+our $VERSION = '1.00';
 
 use strict;
 use warnings;
@@ -35,9 +35,12 @@ Instead you can just declare:
 		parsed_query => sub { shift->parse_the_query };
 
 
-It's nothing fancy, and it might get confused if you've context-specific
-code lurking in there as it attempts to cope with these attributes being
-able to be lists and hashes, but it's Good Enough for most of what I need.
+=head1 CAVEATS
+
+We try to allow an attribute to be a lists or hash and examine caller()
+to try to do the right thing. This will work for simple cases, but if
+you're running into problems, or trying to do something more complex,
+it's always safer to use references instead.
 
 =cut
 
@@ -58,14 +61,24 @@ sub import {
 
 =head1 AUTHOR
 
-Tony Bowden, E<lt>kasei@tmtm.comE<gt>.
+Tony Bowden
 
-=head1 COPYRIGHT
+=head1 BUGS and QUERIES
 
-Copyright (C) 2003 Kasei. All rights reserved.
+Please direct all correspondence regarding this module to:
+  bug-Object-Attribute-Cached@rt.cpan.org
 
-This module is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+=head1 COPYRIGHT AND LICENSE
+
+  Copyright (C) 2003-2005 Kasei
+
+  This program is free software; you can redistribute it and/or modify it under
+  the terms of the GNU General Public License; either version 2 of the License,
+  or (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful, but WITHOUT
+  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE.
 
 =cut
 
